@@ -1,6 +1,6 @@
-package dev.kiteflow.redlimiting.events;
+package dev.kiteflow.redlimiter.events;
 
-import dev.kiteflow.redlimiting.RedLimiting;
+import dev.kiteflow.redlimiter.RedLimiter;
 import org.bukkit.block.Block;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -23,22 +23,22 @@ public class OnRedstoneEvent implements Listener {
             switch(block.getType()){
                 case PISTON:
                 case STICKY_PISTON:
-                    if(difference < RedLimiting.config.pistonTimings){
+                    if(difference < RedLimiter.config.pistonTimings){
                         e.setNewCurrent(0);
                     }
                     break;
                 case OBSERVER:
-                    if(difference < RedLimiting.config.observerTimings){
+                    if(difference < RedLimiter.config.observerTimings){
                         e.setNewCurrent(0);
                     }
                     break;
                 case REPEATER:
-                    if(difference < RedLimiting.config.repeaterTimings){
+                    if(difference < RedLimiter.config.repeaterTimings){
                         e.setNewCurrent(0);
                     }
                     break;
                 default:
-                    if(difference < RedLimiting.config.defaultTimings){
+                    if(difference < RedLimiter.config.defaultTimings){
                         e.setNewCurrent(0);
                     }
             }

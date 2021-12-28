@@ -1,11 +1,11 @@
-package dev.kiteflow.redlimiting;
+package dev.kiteflow.redlimiter;
 
-import dev.kiteflow.redlimiting.events.OnBlockPlace;
-import dev.kiteflow.redlimiting.events.OnRedstoneEvent;
+import dev.kiteflow.redlimiter.events.OnBlockPlace;
+import dev.kiteflow.redlimiter.events.OnRedstoneEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public final class RedLimiting extends JavaPlugin {
+public final class RedLimiter extends JavaPlugin {
     public static ConfigManager config;
 
     private void registerEvents(){

@@ -1,6 +1,6 @@
-package dev.kiteflow.redlimiting.events;
+package dev.kiteflow.redlimiter.events;
 
-import dev.kiteflow.redlimiting.RedLimiting;
+import dev.kiteflow.redlimiter.RedLimiter;
 import org.bukkit.Chunk;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
@@ -37,17 +37,17 @@ public class OnBlockPlace implements Listener {
                 }
             }
 
-            if(blockType == REPEATER && repeaters + 1 > RedLimiting.config.repeaterLimits){
+            if(blockType == REPEATER && repeaters + 1 > RedLimiter.config.repeaterLimits){
                 e.getPlayer().sendMessage("§cChunk limit reached!");
                 e.setCancelled(true);
             }
 
-            if(blockType == OBSERVER && observers + 1 > RedLimiting.config.observerLimits){
+            if(blockType == OBSERVER && observers + 1 > RedLimiter.config.observerLimits){
                 e.getPlayer().sendMessage("§cChunk limit reached!");
                 e.setCancelled(true);
             }
 
-            if(blockType == PISTON || blockType == STICKY_PISTON && pistons + 1 > RedLimiting.config.pistonLimits){
+            if(blockType == PISTON || blockType == STICKY_PISTON && pistons + 1 > RedLimiter.config.pistonLimits){
                 e.getPlayer().sendMessage("§cChunk limit reached!");
                 e.setCancelled(true);
             }

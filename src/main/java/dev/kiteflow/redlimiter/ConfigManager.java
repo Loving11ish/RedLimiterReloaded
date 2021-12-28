@@ -1,4 +1,4 @@
-package dev.kiteflow.redlimiting;
+package dev.kiteflow.redlimiter;
 
 import org.bukkit.configuration.file.FileConfiguration;
 

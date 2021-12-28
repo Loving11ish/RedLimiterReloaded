@@ -1,0 +1,4 @@
+name: RedLimiting
+version: 1.0.0
+main: dev.kiteflow.redlimiting.RedLimiting
+api-version: 1.17

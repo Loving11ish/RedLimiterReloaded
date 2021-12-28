@@ -1,5 +1,5 @@
 # RedLimiter
-RedLimiter is a redstone limiting plugin, helping to curb lag machines whilst not having to disable redstone items.
+RedLimiter is a redstone limiting plugin, helping to curb redstone lag machines whilst keeping redstone items.
 It enables the limiting of how frequent redstone signals are sent and allows limiting of redstone blocks per chunk.
 
 [//]: # (## How to install)

@@ -1,0 +1,15 @@
+# Welcome to the RedLimiting config
+# Here is where you can change the timings and block limits that the plugin uses
+
+# Here are the timings for how often the blocks can be powered, measured in milliseconds
+timings:
+  pistons: 5000
+  observers: 7500
+  repeaters: 3000
+  default: 2500
+
+# Here are the limits per chunk of each redstone block that we offer limits for
+limits:
+  pistons: 64
+  observers: 32
+  repeaters: 64

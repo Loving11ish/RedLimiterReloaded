@@ -1,5 +1,6 @@
 package dev.kiteflow.redlimiting.events;
 
+import dev.kiteflow.redlimiting.RedLimiting;
 import org.bukkit.Chunk;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
@@ -19,7 +20,6 @@ public class OnBlockPlace implements Listener {
         int pistons = 0;
 
         if(blockType == REPEATER || blockType == OBSERVER || blockType == PISTON || blockType == STICKY_PISTON){
-            System.out.println(System.currentTimeMillis());
             for(int y = 0; y < 256; y++){
                 for(int z = 0; z < 16; z++){
                     for(int x = 0; x < 16; x++){
@@ -36,17 +36,19 @@ public class OnBlockPlace implements Listener {
                     }
                 }
             }
-            System.out.println(System.currentTimeMillis());
 
-            if(blockType == REPEATER && repeaters + 1 > 64){
+            if(blockType == REPEATER && repeaters + 1 > RedLimiting.config.repeaterLimits){
+                e.getPlayer().sendMessage("§cChunk limit reached!");
                 e.setCancelled(true);
             }
 
-            if(blockType == OBSERVER && observers + 1 > 32){
+            if(blockType == OBSERVER && observers + 1 > RedLimiting.config.observerLimits){
+                e.getPlayer().sendMessage("§cChunk limit reached!");
                 e.setCancelled(true);
             }
 
-            if(blockType == PISTON || blockType == STICKY_PISTON && pistons + 1 > 64){
+            if(blockType == PISTON || blockType == STICKY_PISTON && pistons + 1 > RedLimiting.config.pistonLimits){
+                e.getPlayer().sendMessage("§cChunk limit reached!");
                 e.setCancelled(true);
             }
         }

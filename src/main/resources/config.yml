@@ -14,4 +14,5 @@ limits:
   observers: 32
   repeaters: 64
 
+# Here is the limit warning message! This is completely customizable
 limitwarning: "&cYou have reached the chunk limit!"

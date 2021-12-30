@@ -26,10 +26,8 @@ public class ConfigManager {
         observerLimits = config.getLong("limits.observers");
         repeaterLimits = config.getLong("limits.repeaters");
 
-        if(!config.contains("limitwarning")) {
-            config.set("limitwarning", limitwarning);
-            RedLimiter.plugin.saveConfig();
-        } else limitwarning = config.getString("limitwarning");
+        if(config.contains("limitwarning", true)) limitwarning = config.getString("limitwarning");
+        else RedLimiter.plugin.getLogger().warning("New config file required! Please edit it so it contains all values in https://github.com/Kiteflow/RedLimiter/blob/master/src/main/resources/config.yml");
 
         limitwarning = translateAlternateColorCodes('&', limitwarning);
     }

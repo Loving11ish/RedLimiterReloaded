@@ -26,12 +26,11 @@ public final class RedLimiter extends JavaPlugin {
 
         //noinspection deprecation
         Bukkit.getScheduler().scheduleAsyncRepeatingTask(this, OnRedstoneEvent::clearBlocks, 200, 300);
-
-        System.out.println("[RedLimiting] RedLimiting enabled");
+        getLogger().info("RedLimiter enabled");
     }
 
     @Override
     public void onDisable() {
-        System.out.println("[RedLimiting] RedLimiting disabled");
+        getLogger().info("RedLimiter disabled");
     }
 }

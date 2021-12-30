@@ -13,3 +13,5 @@ limits:
   pistons: 64
   observers: 32
   repeaters: 64
+
+limitwarning: "&cYou have reached the chunk limit!"

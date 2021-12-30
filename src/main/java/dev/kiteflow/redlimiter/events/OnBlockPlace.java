@@ -24,31 +24,20 @@ public class OnBlockPlace implements Listener {
                 for(int z = 0; z < 16; z++){
                     for(int x = 0; x < 16; x++){
                         switch(chunk.getBlock(x, y, z).getType()){
-                            case REPEATER:
-                                repeaters++;
-                                break;
-                            case OBSERVER:
-                                observers++;
-                            case PISTON:
-                            case STICKY_PISTON:
-                                pistons++;
+                            case REPEATER -> repeaters++;
+                            case OBSERVER -> observers++;
+                            case PISTON, STICKY_PISTON -> pistons++;
                         }
                     }
                 }
             }
 
-            if(blockType == REPEATER && repeaters + 1 > RedLimiter.config.repeaterLimits){
-                e.getPlayer().sendMessage("§cChunk limit reached!");
-                e.setCancelled(true);
-            }
-
-            if(blockType == OBSERVER && observers + 1 > RedLimiter.config.observerLimits){
-                e.getPlayer().sendMessage("§cChunk limit reached!");
-                e.setCancelled(true);
-            }
-
-            if(blockType == PISTON || blockType == STICKY_PISTON && pistons + 1 > RedLimiter.config.pistonLimits){
-                e.getPlayer().sendMessage("§cChunk limit reached!");
+            if(
+                    (blockType == REPEATER && repeaters + 1 > RedLimiter.config.repeaterLimits) ||
+                    (blockType == OBSERVER && observers + 1 > RedLimiter.config.observerLimits) ||
+                    ((blockType == PISTON || blockType == STICKY_PISTON) && pistons + 1 > RedLimiter.config.pistonLimits)
+            ){
+                e.getPlayer().sendMessage(RedLimiter.config.limitwarning);
                 e.setCancelled(true);
             }
         }

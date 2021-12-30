@@ -53,7 +53,7 @@ public class OnRedstoneEvent implements Listener {
         for(Map.Entry<Block, Long> entry : blocks.entrySet()){
             if(System.currentTimeMillis() - entry.getValue() > 10000L){
                 removal.add(entry.getKey());
-            }else{
+            } else {
                 break;
             }
         }

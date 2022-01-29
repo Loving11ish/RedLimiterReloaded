@@ -4,10 +4,16 @@
 name: Java CI with Maven
 
 on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+  workflow_dispatch:
+    inputs:
+      version:
+        type: string
+        required: true
+        description: "New version number to build"
+      description:
+        type: string
+        required: true
+        description: "Description of update changes"
 
 jobs:
   build:
@@ -24,3 +30,14 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn -B verify -f pom.xml
+    - name: Create release
+      id: create_release
+      uses: actions/create-release@latest
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.event.inputs.version }}
+        release_name: RedLimiter ${{ github.event.inputs.version }}
+        body: ${{ github.event.inputs.description }}
+        draft: false
+        prerelease: false

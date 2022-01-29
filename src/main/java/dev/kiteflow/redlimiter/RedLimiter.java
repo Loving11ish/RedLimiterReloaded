@@ -6,6 +6,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
+@SuppressWarnings("deprecation")
 public final class RedLimiter extends JavaPlugin {
     public static Plugin plugin;
     public static ConfigManager config;
@@ -24,8 +25,8 @@ public final class RedLimiter extends JavaPlugin {
 
         registerEvents();
 
-        //noinspection deprecation
         Bukkit.getScheduler().scheduleAsyncRepeatingTask(this, OnRedstoneEvent::clearBlocks, 200, 300);
+        Bukkit.getScheduler().scheduleAsyncRepeatingTask(this, OnRedstoneEvent::clearSignalCount, 200, 1200);
         getLogger().info("RedLimiter enabled");
     }
 

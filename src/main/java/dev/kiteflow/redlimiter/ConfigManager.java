@@ -5,6 +5,8 @@ import org.bukkit.configuration.file.FileConfiguration;
 import static org.bukkit.ChatColor.translateAlternateColorCodes;
 
 public class ConfigManager {
+    public boolean redstoneEnabled;
+
     public Long pistonTimings;
     public Long observerTimings;
     public Long repeaterTimings;
@@ -14,9 +16,11 @@ public class ConfigManager {
     public Long observerLimits;
     public Long repeaterLimits;
 
-    public String limitwarning = "&cYou have reached the chunk limit!";
+    public String limitwarning;
 
     public ConfigManager(FileConfiguration config) {
+        redstoneEnabled = config.getBoolean("redstone");
+
         pistonTimings = config.getLong("timings.pistons");
         observerTimings = config.getLong("timings.observers");
         repeaterTimings = config.getLong("timings.repeaters");
@@ -26,9 +30,7 @@ public class ConfigManager {
         observerLimits = config.getLong("limits.observers");
         repeaterLimits = config.getLong("limits.repeaters");
 
-        if(config.contains("limitwarning", true)) limitwarning = config.getString("limitwarning");
-        else RedLimiter.plugin.getLogger().warning("New config file required! Please edit it so it contains all values in https://github.com/Kiteflow/RedLimiter/blob/master/src/main/resources/config.yml");
-
+        limitwarning = config.getString("limitwarning");
         limitwarning = translateAlternateColorCodes('&', limitwarning);
     }
 }

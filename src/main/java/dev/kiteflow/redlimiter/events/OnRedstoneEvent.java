@@ -1,5 +1,6 @@
 package dev.kiteflow.redlimiter.events;
 
+import dev.kiteflow.redlimiter.ConfigManager;
 import dev.kiteflow.redlimiter.RedLimiter;
 import org.bukkit.Bukkit;
 import org.bukkit.block.Block;
@@ -13,11 +14,15 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class OnRedstoneEvent implements Listener {
-    private static LinkedHashMap<Block, Long> blocks = new LinkedHashMap<>();
-    private static HashMap<Block, Integer> signalCount = new HashMap<>();
+    public static LinkedHashMap<Block, Long> blocks = new LinkedHashMap<>();
+
+    public static boolean redstoneEnabled = RedLimiter.configManager.redstoneEnabled;
+    public static HashMap<Block, Integer> signalCount = new HashMap<>();
 
     @EventHandler
     public void onRedstoneEvent(BlockRedstoneEvent e){
+        if(!redstoneEnabled) e.setNewCurrent(0);
+
         Block block = e.getBlock();
 
         if(blocks.containsKey(block)){
@@ -26,35 +31,28 @@ public class OnRedstoneEvent implements Listener {
             switch(block.getType()){
                 case PISTON:
                 case STICKY_PISTON:
-                    if(difference < RedLimiter.config.pistonTimings){
+                    if(difference < RedLimiter.configManager.pistonTimings){
                         e.setNewCurrent(0);
                     }
                     break;
                 case OBSERVER:
-                    if(difference < RedLimiter.config.observerTimings){
+                    if(difference < RedLimiter.configManager.observerTimings){
                         e.setNewCurrent(0);
                     }
                     break;
                 case REPEATER:
-                    if(difference < RedLimiter.config.repeaterTimings){
+                    if(difference < RedLimiter.configManager.repeaterTimings){
                         e.setNewCurrent(0);
                     }
                     break;
                 default:
-                    if(difference < RedLimiter.config.defaultTimings){
+                    if(difference < RedLimiter.configManager.defaultTimings){
                         e.setNewCurrent(0);
                     }
             }
 
             signalCount.putIfAbsent(block, 0);
             signalCount.put(block, signalCount.get(block) + 1);
-
-            if(signalCount.get(block) >= 15) Bukkit.getLogger().info(String.format(
-                    "Frequently fired block at X: %s Y: %s Z: %s",
-                    block.getX(),
-                    block.getY(),
-                    block.getZ()
-            ));
         }
 
         blocks.put(block, System.currentTimeMillis());

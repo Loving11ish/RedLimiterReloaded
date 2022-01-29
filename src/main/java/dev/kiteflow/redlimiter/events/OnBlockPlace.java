@@ -1,6 +1,7 @@
 package dev.kiteflow.redlimiter.events;
 
 import dev.kiteflow.redlimiter.RedLimiter;
+import dev.kiteflow.redlimiter.gui.FrequentGUI;
 import org.bukkit.Chunk;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
@@ -33,11 +34,11 @@ public class OnBlockPlace implements Listener {
             }
 
             if(
-                    (blockType == REPEATER && repeaters + 1 > RedLimiter.config.repeaterLimits) ||
-                    (blockType == OBSERVER && observers + 1 > RedLimiter.config.observerLimits) ||
-                    ((blockType == PISTON || blockType == STICKY_PISTON) && pistons + 1 > RedLimiter.config.pistonLimits)
+                    (blockType == REPEATER && repeaters + 1 > RedLimiter.configManager.repeaterLimits) ||
+                    (blockType == OBSERVER && observers + 1 > RedLimiter.configManager.observerLimits) ||
+                    ((blockType == PISTON || blockType == STICKY_PISTON) && pistons + 1 > RedLimiter.configManager.pistonLimits)
             ){
-                e.getPlayer().sendMessage(RedLimiter.config.limitwarning);
+                e.getPlayer().sendMessage(RedLimiter.configManager.limitwarning);
                 e.setCancelled(true);
             }
         }

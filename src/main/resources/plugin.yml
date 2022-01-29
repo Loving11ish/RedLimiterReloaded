@@ -1,4 +1,8 @@
 name: RedLimiter
-version: 1.1.0
+version: 1.2.0
 main: dev.kiteflow.redlimiter.RedLimiter
+softdepend: [CoreProtect]
 api-version: 1.17
+commands:
+  redlimiter:
+    description: RedLimiter command

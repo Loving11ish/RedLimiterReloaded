@@ -1,8 +1,6 @@
-package dev.kiteflow.redlimiter.events;
+package dev.kiteflow.redlimiterreloaded.events;
 
-import dev.kiteflow.redlimiter.ConfigManager;
-import dev.kiteflow.redlimiter.RedLimiter;
-import org.bukkit.Bukkit;
+import dev.kiteflow.redlimiterreloaded.RedLimiterReloaded;
 import org.bukkit.block.Block;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -13,15 +11,15 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class OnRedstoneEvent implements Listener {
+public class OnRedStoneEvent implements Listener {
     public static LinkedHashMap<Block, Long> blocks = new LinkedHashMap<>();
 
-    public static boolean redstoneEnabled = RedLimiter.configManager.redstoneEnabled;
+    public static boolean redStoneEnabled = RedLimiterReloaded.configManager.redstoneEnabled;
     public static HashMap<Block, Integer> signalCount = new HashMap<>();
 
     @EventHandler
-    public void onRedstoneEvent(BlockRedstoneEvent e){
-        if(!redstoneEnabled) e.setNewCurrent(0);
+    public void onRedStoneEvent(BlockRedstoneEvent e){
+        if(!redStoneEnabled) e.setNewCurrent(0);
 
         Block block = e.getBlock();
 
@@ -31,22 +29,22 @@ public class OnRedstoneEvent implements Listener {
             switch(block.getType()){
                 case PISTON:
                 case STICKY_PISTON:
-                    if(difference < RedLimiter.configManager.pistonTimings){
+                    if(difference < RedLimiterReloaded.configManager.pistonTimings){
                         e.setNewCurrent(0);
                     }
                     break;
                 case OBSERVER:
-                    if(difference < RedLimiter.configManager.observerTimings){
+                    if(difference < RedLimiterReloaded.configManager.observerTimings){
                         e.setNewCurrent(0);
                     }
                     break;
                 case REPEATER:
-                    if(difference < RedLimiter.configManager.repeaterTimings){
+                    if(difference < RedLimiterReloaded.configManager.repeaterTimings){
                         e.setNewCurrent(0);
                     }
                     break;
                 default:
-                    if(difference < RedLimiter.configManager.defaultTimings){
+                    if(difference < RedLimiterReloaded.configManager.defaultTimings){
                         e.setNewCurrent(0);
                     }
             }

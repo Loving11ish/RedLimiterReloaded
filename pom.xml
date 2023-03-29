@@ -5,18 +5,19 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>dev.kiteflow</groupId>
-    <artifactId>RedLimiter</artifactId>
-    <version>1.2.0</version>
+    <artifactId>RedLimiterReloaded</artifactId>
+    <version>1.0.0-ALPHA-01</version>
     <packaging>jar</packaging>
 
-    <name>RedLimiter</name>
+    <name>RedLimiterReloaded</name>
 
     <properties>
-        <java.version>16</java.version>
+        <java.version>17</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <build>
+        <defaultGoal>clean package</defaultGoal>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -67,7 +68,7 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.18.1-R0.1-SNAPSHOT</version>
+            <version>1.19.4-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

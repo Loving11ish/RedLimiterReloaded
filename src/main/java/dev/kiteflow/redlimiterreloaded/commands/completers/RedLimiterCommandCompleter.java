@@ -1,4 +1,4 @@
-package dev.kiteflow.redlimiter.commands.completers;
+package dev.kiteflow.redlimiterreloaded.commands.completers;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;

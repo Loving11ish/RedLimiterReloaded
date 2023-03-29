@@ -1,8 +1,14 @@
-name: RedLimiter
-version: 1.2.0
-main: dev.kiteflow.redlimiter.RedLimiter
+name: RedLimiterReloaded
+version: '${project.version}'
+main: dev.kiteflow.redlimiterreloaded.RedLimiterReloaded
+authors: [Loving11ish, Kiteflow]
 softdepend: [CoreProtect]
-api-version: 1.17
+api-version: 1.19
 commands:
   redlimiter:
-    description: RedLimiter command
+    description: RedLimiterReloaded command
+    permission: redlimiterreloaded.use
+
+permissions:
+  redlimiter.use:
+    default: op

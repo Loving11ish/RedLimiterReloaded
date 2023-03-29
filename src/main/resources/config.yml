@@ -1,4 +1,4 @@
-# Welcome to the RedLimiter config
+# Welcome to the RedLimiterReloaded config
 # Here is where you can change the timings and block limits that the plugin uses
 
 # Here you can enable/disable redstone (this can be changed in game)
@@ -13,9 +13,50 @@ timings:
 
 # Here are the limits per chunk of each redstone block that we offer limits for
 limits:
-  pistons: 64
-  observers: 32
-  repeaters: 64
+  limit-value: 64
+  materials-list:
+    - ARMOR_STAND
+    - ACACIA_BUTTON
+    - ACACIA_PRESSURE_PLATE
+    - ACTIVATOR_RAIL
+    - BAMBOO_BUTTON
+    - BAMBOO_PRESSURE_PLATE
+    - BIRCH_BUTTON
+    - BIRCH_PRESSURE_PLATE
+    - CHERRY_BUTTON
+    - CHERRY_PRESSURE_PLATE
+    - COMPARATOR
+    - CRAFTING_TABLE
+    - CRIMSON_BUTTON
+    - CRIMSON_PRESSURE_PLATE
+    - DARK_OAK_BUTTON
+    - DARK_OAK_PRESSURE_PLATE
+    - DISPENSER
+    - DROPPER
+    - FURNACE
+    - LECTERN
+    - LEVER
+    - OAK_BUTTON
+    - OAK_PRESSURE_PLATE
+    - OBSERVER
+    - PISTON
+    - POWERED_RAIL
+    - REDSTONE
+    - REDSTONE_TORCH
+    - REDSTONE_WALL_TORCH
+    - REPEATER
+    - SCULK_SENSOR
+    - SMOKER
+    - SPRUCE_BUTTON
+    - SPRUCE_PRESSURE_PLATE
+    - STICKY_PISTON
+    - STONE_BUTTON
+    - STONE_PRESSURE_PLATE
+    - TARGET
+    - TNT
+    - TRAPPED_CHEST
+    - TRIPWIRE
+    - TRIPWIRE_HOOK
 
 # Here is the limit warning message! This is completely customizable
 limitwarning: "&cYou have reached the chunk limit!"

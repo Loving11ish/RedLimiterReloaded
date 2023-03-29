@@ -1,10 +1,8 @@
-package dev.kiteflow.redlimiter.gui;
+package dev.kiteflow.redlimiterreloaded.gui;
 
-import dev.kiteflow.redlimiter.RedLimiter;
-import dev.kiteflow.redlimiter.events.OnRedstoneEvent;
+import dev.kiteflow.redlimiterreloaded.events.OnRedStoneEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -22,16 +20,16 @@ public class FrequentGUI implements Listener {
     private final Inventory inventory;
 
     public FrequentGUI(Player player) {
-        inventory = Bukkit.createInventory(null, 27, "Frequent Redstone");
+        inventory = Bukkit.createInventory(null, 54, "Frequent Redstone");
         addItems();
 
         player.openInventory(inventory);
     }
 
     private void addItems() {
-        if(OnRedstoneEvent.signalCount == null) return;
+        if(OnRedStoneEvent.signalCount == null) return;
 
-        OnRedstoneEvent.signalCount.entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.reverseOrder())).limit(27)
+        OnRedStoneEvent.signalCount.entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.reverseOrder())).limit(27)
                 .forEach(frequent -> inventory.addItem(guiItem(frequent)));
     }
 
@@ -59,7 +57,6 @@ public class FrequentGUI implements Listener {
     @EventHandler
     public void onInventoryClick(InventoryClickEvent e) {
         if(e.getInventory() != inventory) return;
-
         e.setCancelled(true);
     }
 }

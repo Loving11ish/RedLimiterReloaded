@@ -37,7 +37,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         tag_name: ${{ github.event.inputs.version }}
-        release_name: RedLimiter ${{ github.event.inputs.version }}
+        release_name: RedLimiterReloaded ${{ github.event.inputs.version }}
         body: ${{ github.event.inputs.description }}
         draft: false
         prerelease: false

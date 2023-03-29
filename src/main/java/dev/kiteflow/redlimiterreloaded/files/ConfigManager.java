@@ -1,20 +1,20 @@
-package dev.kiteflow.redlimiter;
+package dev.kiteflow.redlimiterreloaded.files;
 
+import dev.kiteflow.redlimiterreloaded.utils.ColorUtils;
 import org.bukkit.configuration.file.FileConfiguration;
 
-import static org.bukkit.ChatColor.translateAlternateColorCodes;
+import java.util.ArrayList;
 
 public class ConfigManager {
     public boolean redstoneEnabled;
+
+    public int limitValue;
+    public ArrayList<String> materialList;
 
     public Long pistonTimings;
     public Long observerTimings;
     public Long repeaterTimings;
     public Long defaultTimings;
-
-    public Long pistonLimits;
-    public Long observerLimits;
-    public Long repeaterLimits;
 
     public String limitwarning;
 
@@ -26,11 +26,9 @@ public class ConfigManager {
         repeaterTimings = config.getLong("timings.repeaters");
         defaultTimings = config.getLong("timings.default");
 
-        pistonLimits = config.getLong("limits.pistons");
-        observerLimits = config.getLong("limits.observers");
-        repeaterLimits = config.getLong("limits.repeaters");
+        limitValue = config.getInt("limits.limit-value");
+        materialList = new ArrayList<>(config.getStringList("limits.materials-list"));
 
-        limitwarning = config.getString("limitwarning");
-        limitwarning = translateAlternateColorCodes('&', limitwarning);
+        limitwarning = ColorUtils.translateColorCodes(config.getString("limitwarning"));
     }
 }

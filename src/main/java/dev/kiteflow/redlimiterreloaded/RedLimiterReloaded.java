@@ -2,6 +2,7 @@ package dev.kiteflow.redlimiterreloaded;
 
 import dev.kiteflow.redlimiterreloaded.commands.RedLimiterCommand;
 import dev.kiteflow.redlimiterreloaded.commands.completers.RedLimiterCommandCompleter;
+import dev.kiteflow.redlimiterreloaded.events.MenuHandler;
 import dev.kiteflow.redlimiterreloaded.events.OnBlockPlace;
 import dev.kiteflow.redlimiterreloaded.events.OnRedStoneEvent;
 import dev.kiteflow.redlimiterreloaded.files.ConfigManager;
@@ -70,6 +71,7 @@ public final class RedLimiterReloaded extends JavaPlugin {
         //Register events
         getServer().getPluginManager().registerEvents(new OnRedStoneEvent(), this);
         getServer().getPluginManager().registerEvents(new OnBlockPlace(), this);
+        getServer().getPluginManager().registerEvents(new MenuHandler(), this);
 
         //Run auto task timers
         TaskTimers taskTimers = new TaskTimers();

@@ -5,9 +5,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -16,7 +13,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Map;
 
-public class FrequentGUI implements Listener {
+public class FrequentGUI {
     private final Inventory inventory;
 
     public FrequentGUI(Player player) {
@@ -29,7 +26,7 @@ public class FrequentGUI implements Listener {
     private void addItems() {
         if(OnRedStoneEvent.signalCount == null) return;
 
-        OnRedStoneEvent.signalCount.entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.reverseOrder())).limit(27)
+        OnRedStoneEvent.signalCount.entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.reverseOrder())).limit(54)
                 .forEach(frequent -> inventory.addItem(guiItem(frequent)));
     }
 
@@ -52,11 +49,5 @@ public class FrequentGUI implements Listener {
         item.setItemMeta(meta);
 
         return item;
-    }
-
-    @EventHandler
-    public void onInventoryClick(InventoryClickEvent e) {
-        if(e.getInventory() != inventory) return;
-        e.setCancelled(true);
     }
 }

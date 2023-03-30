@@ -12,6 +12,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class OnRedStoneEvent implements Listener {
+
     public static LinkedHashMap<Block, Long> blocks = new LinkedHashMap<>();
 
     public static boolean redStoneEnabled = RedLimiterReloaded.configManager.redstoneEnabled;

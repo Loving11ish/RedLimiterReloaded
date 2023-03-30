@@ -6,7 +6,7 @@
 
     <groupId>dev.kiteflow</groupId>
     <artifactId>RedLimiterReloaded</artifactId>
-    <version>1.0.0-ALPHA-01</version>
+    <version>1.0.0</version>
     <packaging>jar</packaging>
 
     <name>RedLimiterReloaded</name>

@@ -18,7 +18,7 @@ public class OnBlockPlace implements Listener {
 
         for (Material material : RedLimiterReloaded.getPlugin().getMaterialsList()){
             if (blockType == material){
-                for(int y = -64; y < 319; y++){
+                for(int y = 0; y < 256; y++){
                     for(int z = 0; z < 16; z++){
                         for(int x = 0; x < 16; x++){
                             if (chunk.getBlock(x, y, z).getType() == material) {

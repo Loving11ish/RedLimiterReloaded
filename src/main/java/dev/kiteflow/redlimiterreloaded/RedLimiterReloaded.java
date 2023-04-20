@@ -1,8 +1,8 @@
 package dev.kiteflow.redlimiterreloaded;
 
+import com.tcoded.folialib.FoliaLib;
 import dev.kiteflow.redlimiterreloaded.commands.RedLimiterCommand;
 import dev.kiteflow.redlimiterreloaded.commands.completers.RedLimiterCommandCompleter;
-import dev.kiteflow.redlimiterreloaded.events.MenuHandler;
 import dev.kiteflow.redlimiterreloaded.events.OnBlockPlace;
 import dev.kiteflow.redlimiterreloaded.events.OnRedStoneEvent;
 import dev.kiteflow.redlimiterreloaded.files.ConfigManager;
@@ -71,7 +71,6 @@ public final class RedLimiterReloaded extends JavaPlugin {
         //Register events
         getServer().getPluginManager().registerEvents(new OnRedStoneEvent(), this);
         getServer().getPluginManager().registerEvents(new OnBlockPlace(), this);
-        getServer().getPluginManager().registerEvents(new MenuHandler(), this);
 
         //Run auto task timers
         TaskTimers taskTimers = new TaskTimers();
@@ -91,13 +90,10 @@ public final class RedLimiterReloaded extends JavaPlugin {
         //Safely stop the background tasks if running
         logger.info(ColorUtils.translateColorCodes("-------------------------------------------"));
         logger.info(ColorUtils.translateColorCodes("&6RedLimiterReloaded: &3Plugin by: &b&lLoving11ish & Kiteflow"));
-        TaskTimers taskTimers = new TaskTimers();
         try {
-            if (Bukkit.getScheduler().isCurrentlyRunning(taskTimers.taskID1)||Bukkit.getScheduler().isQueued(taskTimers.taskID1)){
-                Bukkit.getScheduler().cancelTask(taskTimers.taskID1);
-            }
-            if (Bukkit.getScheduler().isCurrentlyRunning(taskTimers.taskID2)||Bukkit.getScheduler().isQueued(taskTimers.taskID2)){
-                Bukkit.getScheduler().cancelTask(taskTimers.taskID2);
+            FoliaLib foliaLib = new FoliaLib(this);
+            if (foliaLib.isUnsupported()){
+                Bukkit.getScheduler().cancelTasks(this);
             }
             logger.info(ColorUtils.translateColorCodes("&6RedLimiterReloaded: &3Background tasks have disabled successfully!"));
         } catch (Exception e) {

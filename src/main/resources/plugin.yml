@@ -4,10 +4,15 @@ main: dev.kiteflow.redlimiterreloaded.RedLimiterReloaded
 authors: [Loving11ish, Kiteflow]
 softdepend: [CoreProtect]
 api-version: 1.19
+folia-supported: true
 commands:
   redlimiter:
     description: RedLimiterReloaded command
     permission: redlimiterreloaded.use
+    aliases:
+      - red
+      - rlr
+      - limit
 
 permissions:
   redlimiter.use:

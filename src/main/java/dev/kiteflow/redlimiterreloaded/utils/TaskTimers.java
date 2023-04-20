@@ -1,29 +1,34 @@
 package dev.kiteflow.redlimiterreloaded.utils;
 
+import com.tcoded.folialib.FoliaLib;
+import com.tcoded.folialib.wrapper.WrappedTask;
 import dev.kiteflow.redlimiterreloaded.RedLimiterReloaded;
 import dev.kiteflow.redlimiterreloaded.events.OnRedStoneEvent;
-import org.bukkit.Bukkit;
+
+import java.util.concurrent.TimeUnit;
 
 public class TaskTimers {
 
-    public Integer taskID1;
-    public Integer taskID2;
+    private FoliaLib foliaLib = new FoliaLib(RedLimiterReloaded.getPlugin());
+
+    public WrappedTask task1;
+    public WrappedTask task2;
 
     public void runClearBlocks(){
-        taskID1 = Bukkit.getScheduler().scheduleSyncRepeatingTask(RedLimiterReloaded.getPlugin(), new Runnable() {
+        task1 = foliaLib.getImpl().runTimerAsync(new Runnable() {
             @Override
             public void run() {
                 OnRedStoneEvent.clearBlocks();
             }
-        }, 200, 300);
+        }, 10L, 15L, TimeUnit.SECONDS);
     }
 
     public void runClearSignalCount(){
-        taskID2 = Bukkit.getScheduler().scheduleSyncRepeatingTask(RedLimiterReloaded.getPlugin(), new Runnable() {
+        task2 = foliaLib.getImpl().runTimerAsync(new Runnable() {
             @Override
             public void run() {
                 OnRedStoneEvent.clearSignalCount();
             }
-        }, 200, 6000);
+        }, 10L, 300L, TimeUnit.SECONDS);
     }
 }

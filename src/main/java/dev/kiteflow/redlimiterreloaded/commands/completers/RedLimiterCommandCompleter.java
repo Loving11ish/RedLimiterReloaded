@@ -13,7 +13,6 @@ public class RedLimiterCommandCompleter implements TabCompleter {
         List<String> completers = new ArrayList<>();
 
         if(args.length == 1) {
-            completers.add("frequent");
             completers.add("toggle");
         }
 

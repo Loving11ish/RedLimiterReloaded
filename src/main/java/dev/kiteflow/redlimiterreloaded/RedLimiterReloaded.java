@@ -26,6 +26,7 @@ public final class RedLimiterReloaded extends JavaPlugin {
     private static RedLimiterReloaded plugin;
     private static FileConfiguration config;
     public static ConfigManager configManager;
+    public static TaskTimers taskTimers;
     Logger logger = this.getLogger();
 
     private List<String> configMaterialList = new ArrayList<>();
@@ -73,7 +74,7 @@ public final class RedLimiterReloaded extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new OnBlockPlace(), this);
 
         //Run auto task timers
-        TaskTimers taskTimers = new TaskTimers();
+        taskTimers = new TaskTimers();
         taskTimers.runClearBlocks();
         taskTimers.runClearSignalCount();
 
@@ -92,6 +93,8 @@ public final class RedLimiterReloaded extends JavaPlugin {
         logger.info(ColorUtils.translateColorCodes("&6RedLimiterReloaded: &3Plugin by: &b&lLoving11ish & Kiteflow"));
         try {
             FoliaLib foliaLib = new FoliaLib(this);
+            taskTimers.task1.cancel();
+            taskTimers.task2.cancel();
             if (foliaLib.isUnsupported()){
                 Bukkit.getScheduler().cancelTasks(this);
             }

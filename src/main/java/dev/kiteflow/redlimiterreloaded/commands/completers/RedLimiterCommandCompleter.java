@@ -14,6 +14,7 @@ public class RedLimiterCommandCompleter implements TabCompleter {
 
         if(args.length == 1) {
             completers.add("toggle");
+            completers.add("reload");
         }
 
         return completers;

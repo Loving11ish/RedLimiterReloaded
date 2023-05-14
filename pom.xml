@@ -6,7 +6,7 @@
 
     <groupId>dev.kiteflow</groupId>
     <artifactId>RedLimiterReloaded</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <packaging>jar</packaging>
 
     <name>RedLimiterReloaded</name>
@@ -37,7 +37,7 @@
                     <relocations>
                         <relocation>
                             <pattern>com.tcoded.folialib</pattern>
-                            <shadedPattern>dev.kiteflow.redlimiterreloaded.RedLimiterReloaded.folialib</shadedPattern>
+                            <shadedPattern>dev.kiteflow.redlimiterreloaded.folialib</shadedPattern>
                         </relocation>
                     </relocations>
                 </configuration>

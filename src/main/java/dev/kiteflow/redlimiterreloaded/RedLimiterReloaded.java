@@ -11,6 +11,7 @@ import dev.kiteflow.redlimiterreloaded.utils.TaskTimers;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -38,10 +39,12 @@ public final class RedLimiterReloaded extends JavaPlugin {
         plugin = this;
 
         //Server version compatibility check
-        if (!(Bukkit.getServer().getVersion().contains("1.19"))){
+        if (!(Bukkit.getServer().getVersion().contains("1.19")||Bukkit.getServer().getVersion().contains("1.20"))){
             logger.warning(ColorUtils.translateColorCodes("&4-------------------------------------------"));
+            logger.warning(ColorUtils.translateColorCodes("&6RedLimiterReloaded: &4Your server version is: " + Bukkit.getServer().getVersion()));
             logger.warning(ColorUtils.translateColorCodes("&6RedLimiterReloaded: &4This plugin is only supported on the Minecraft versions listed below:"));
             logger.warning(ColorUtils.translateColorCodes("&6RedLimiterReloaded: &41.19.x"));
+            logger.warning(ColorUtils.translateColorCodes("&6RedLimiterReloaded: &41.20.x"));
             logger.warning(ColorUtils.translateColorCodes("&6RedLimiterReloaded: &4Is now disabling!"));
             logger.warning(ColorUtils.translateColorCodes("&4-------------------------------------------"));
             Bukkit.getPluginManager().disablePlugin(this);
@@ -49,6 +52,7 @@ public final class RedLimiterReloaded extends JavaPlugin {
         }else {
             logger.info(ColorUtils.translateColorCodes("&a-------------------------------------------"));
             logger.info(ColorUtils.translateColorCodes("&6RedLimiterReloaded: &aA supported Minecraft version has been detected"));
+            logger.info(ColorUtils.translateColorCodes("&6RedLimiterReloaded: &4Your server version is: " + Bukkit.getServer().getVersion()));
             logger.info(ColorUtils.translateColorCodes("&6RedLimiterReloaded: &6Continuing plugin startup"));
             logger.info(ColorUtils.translateColorCodes("&a-------------------------------------------"));
         }
@@ -88,6 +92,11 @@ public final class RedLimiterReloaded extends JavaPlugin {
 
     @Override
     public void onDisable() {
+        //Plugin shutdown logic
+
+        //Unregister listeners
+        HandlerList.unregisterAll(this);
+
         //Safely stop the background tasks if running
         logger.info(ColorUtils.translateColorCodes("-------------------------------------------"));
         logger.info(ColorUtils.translateColorCodes("&6RedLimiterReloaded: &3Plugin by: &b&lLoving11ish & Kiteflow"));
@@ -108,6 +117,12 @@ public final class RedLimiterReloaded extends JavaPlugin {
         logger.info(ColorUtils.translateColorCodes("&6RedLimiterReloaded: &3Has been shutdown successfully"));
         logger.info(ColorUtils.translateColorCodes("&6RedLimiterReloaded: &3Goodbye!"));
         logger.info(ColorUtils.translateColorCodes("-------------------------------------------"));
+
+        //Clear up any plugin remains
+        taskTimers = null;
+        configManager = null;
+        config = null;
+        plugin = null;
     }
 
     public static RedLimiterReloaded getPlugin() {

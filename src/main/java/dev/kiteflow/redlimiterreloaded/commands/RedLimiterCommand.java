@@ -4,6 +4,7 @@ import com.tcoded.folialib.FoliaLib;
 import dev.kiteflow.redlimiterreloaded.RedLimiterReloaded;
 import dev.kiteflow.redlimiterreloaded.events.OnRedStoneEvent;
 import dev.kiteflow.redlimiterreloaded.utils.ColorUtils;
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -38,12 +39,13 @@ public class RedLimiterCommand implements CommandExecutor {
                     foliaLib.getImpl().runLater(new Runnable() {
                         @Override
                         public void run() {
-                            plugin.onEnable();
+                            Bukkit.getPluginManager().getPlugin("RedLimiterReloaded").onEnable();
                         }
                     }, 5L, TimeUnit.SECONDS);
                     foliaLib.getImpl().runLater(new Runnable() {
                         @Override
                         public void run() {
+                            RedLimiterReloaded.getPlugin().reloadConfig();
                             sender.sendMessage(ColorUtils.translateColorCodes("&3Plugin reload complete!"));
                         }
                     }, 6L, TimeUnit.SECONDS);
@@ -68,12 +70,13 @@ public class RedLimiterCommand implements CommandExecutor {
                     foliaLib.getImpl().runLater(new Runnable() {
                         @Override
                         public void run() {
-                            plugin.onEnable();
+                            Bukkit.getPluginManager().getPlugin("RedLimiterReloaded").onEnable();
                         }
                     }, 5L, TimeUnit.SECONDS);
                     foliaLib.getImpl().runLater(new Runnable() {
                         @Override
                         public void run() {
+                            RedLimiterReloaded.getPlugin().reloadConfig();
                             sender.sendMessage(ColorUtils.translateColorCodes("&3Plugin reload complete!"));
                         }
                     }, 6L, TimeUnit.SECONDS);
